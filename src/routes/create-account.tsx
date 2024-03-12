@@ -30,7 +30,7 @@ export default function CreateAccount() {
     setError,
   } = useForm<IAccountCreationValues>();
 
-  const handleAccountCreationSubmit: SubmitHandler<
+  const onAccountCreationSubmit: SubmitHandler<
     IAccountCreationValues
   > = async ({ name, email, password }) => {
     if (isLoading) return;
@@ -45,8 +45,6 @@ export default function CreateAccount() {
       navigate("/");
     } catch (e) {
       if (e instanceof FirebaseError) {
-        console.log(e);
-
         if (e.code == "auth/email-already-in-use") {
           setError("email", { type: "existingEmail", message: e.message });
         }
@@ -62,10 +60,7 @@ export default function CreateAccount() {
   return (
     <Wrapper>
       <Title>Join X</Title>
-      <Form
-        autoComplete="off"
-        onSubmit={handleSubmit(handleAccountCreationSubmit)}
-      >
+      <Form autoComplete="off" onSubmit={handleSubmit(onAccountCreationSubmit)}>
         <Input
           id="name"
           placeholder="Name"
