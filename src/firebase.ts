@@ -8,7 +8,7 @@ import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA9IaV7bWBHx1HiiHU7MhFAAKQ0ay5ekkE",
+  apiKey: import.meta.env.VITE_FIREBASE_KEY,
   authDomain: "x-clone-648c5.firebaseapp.com",
   projectId: "x-clone-648c5",
   storageBucket: "x-clone-648c5.appspot.com",
